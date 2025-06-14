@@ -27,30 +27,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm'
           
       - name: Install pnpm
         uses: pnpm/action-setup@v3
-        id: pnpm-install
         with:
           version: 8
-          run_install: false
-          
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "PNPM_HOME=$(pnpm store path --silent)" >> $GITHUB_ENV
-          echo "${{ github.workspace }}/.pnpm-store" >> $GITHUB_STATE
-          
-      - name: Setup PATH for pnpm
-        run: |
-          echo "$PNPM_HOME" >> $GITHUB_PATH
-          
+          run_install: true
+
       - name: Install dependencies
-        run: |
-          pnpm config set store-dir .pnpm-store
-          pnpm install --frozen-lockfile
-          pnpm store path
+        run: pnpm install --frozen-lockfile
         
       - name: Build
         run: pnpm run build

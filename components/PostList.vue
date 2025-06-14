@@ -7,7 +7,7 @@
         </NuxtLink>
       </h2>
       <div class="text-gray-500 mb-4">
-        {{ new Date(post.date).toLocaleDateString('ko-KR') }}
+        {{ new Date(post.publishDate).toLocaleDateString('ko-KR') }}
       </div>
       <p class="text-gray-600 mb-4">{{ post.description }}</p>
       <div class="flex gap-2">
@@ -20,5 +20,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: posts } = await useAsyncData('posts', () => queryContent('/posts').sort({ date: -1 }).find())
+const { data: posts } = await useAsyncData('posts', () =>
+  queryContent('/posts').sort({ publishDate: -1 }).find()
+)
 </script> 
