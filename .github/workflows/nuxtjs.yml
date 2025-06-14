@@ -59,7 +59,12 @@ jobs:
         run: pnpm run generate
         
       - name: Create .nojekyll file
-        run: touch ./dist/.nojekyll
+        run: |
+          touch ./dist/.nojekyll
+          echo "This file is used to prevent Jekyll from processing the site" > ./dist/.nojekyll
+          
+      - name: List files in dist directory
+        run: ls -la ./dist
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

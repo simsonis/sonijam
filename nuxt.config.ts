@@ -40,13 +40,23 @@ export default defineNuxtConfig({
       routes: ['/', '/sitemap.xml', '/rss.xml'],
       ignore: ['/__pinceau_tokens_config.json', '/__pinceau_tokens_schema.json']
     },
-    static: true
+    static: true,
+    output: {
+      dir: 'dist',
+      serverDir: 'dist/_nuxt',
+      publicDir: 'dist'
+    }
   },
   
   // For 404 fallback
   routeRules: {
     '/**': { static: true },
     '/404': { static: true }
+  },
+  
+  // Ensure static files are properly handled
+  experimental: {
+    payloadExtraction: true
   },
 
   // Modules
