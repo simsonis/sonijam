@@ -5,10 +5,34 @@ export default defineNuxtConfig({
     enabled: true
   },
   site: {
-    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://yanbt.netlify.app',
-    name: process.env.NUXT_PUBLIC_SITE_NAME || 'YANBT',
-    description: process.env.NUXT_PUBLIC_SITE_DESCRIPTION || 'Yet Another Nuxt Blog Theme!',
-    language: 'en', // 
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://sonijam.github.io',
+    name: 'Sonijam',
+    description: '개인 블로그',
+    language: 'ko',
+  },
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ]
+    }
+  },
+  runtimeConfig: {
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://sonijam.github.io'
+    }
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/']
+    }
+  },
+  build: {
+    target: 'static'
+  },
+  generate: {
+    fallback: true
   },
   telemetry: false,
   nitro: {
