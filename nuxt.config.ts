@@ -1,65 +1,55 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
-  devtools: {
-    enabled: true
-  },
-  site: {
-    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://simsonis.github.io',
-    name: 'Sonijam',
-    description: '개인 블로그',
-    language: 'ko',
-  },
+  // App configuration
   app: {
     head: {
+      htmlAttrs: {
+        lang: 'ko'
+      },
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
+    },
+    pageTransition: { 
+      name: 'page', 
+      mode: 'out-in' 
     }
   },
+
+  // Site metadata
+  site: {
+    url: 'https://simsonis.github.io',
+    name: 'Sonijam',
+    description: '개인 블로그',
+  },
+
+  // Runtime config
   runtimeConfig: {
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://simsonis.github.io'
+      siteUrl: 'https://simsonis.github.io'
     }
   },
-  build: {
-    target: 'static'
-  },
-  generate: {
-    fallback: true
-  },
+
+  // Build configuration
+  // Note: target: 'static' is the default in Nuxt 3
+  
+  // Generate configuration for static site generation
   nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: ['/']
-    }
-  },
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: ['/']
-    }
-  },
-  build: {
-    target: 'static'
-  },
-  generate: {
-    fallback: true
-  },
-  telemetry: false,
-  nitro: {
-    node: true,
     prerender: {
       crawlLinks: true,
       routes: ['/', '/sitemap.xml', '/rss.xml'],
       ignore: ['/__pinceau_tokens_config.json', '/__pinceau_tokens_schema.json']
-    }
+    },
+    static: true
   },
-  extends: ['@nuxt-themes/elements'],
-  app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
+  
+  // For 404 fallback
+  routeRules: {
+    '/**': { static: true },
+    '/404': { static: true }
   },
-  image: { twicpics: { baseURL: process.env.NUXT_PUBLIC_TWICPICS_URL } },
+
+  // Modules
   modules: [
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
@@ -69,18 +59,14 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     '@nuxthq/studio'
   ],
-  colorMode: {
-    classSuffix: ''
-  },
+
+
+
+  // Content module configuration
   content: {
-    // https://content.nuxtjs.org/api/
     markdown: {
-      remarkPlugins: [
-        'remark-math'
-      ],
-      rehypePlugins: [
-        'rehype-mathjax'
-      ],
+      remarkPlugins: ['remark-math'],
+      rehypePlugins: ['rehype-mathjax'],
       toc: {
         depth: 3,
         searchDepth: 3
@@ -88,11 +74,22 @@ export default defineNuxtConfig({
     },
     documentDriven: true,
     highlight: {
-      // See the available themes on https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
       theme: {
         dark: 'github-dark',
         default: 'dracula-soft'
       }
     }
+  },
+
+  // Other configurations
+  telemetry: false,
+  devtools: { enabled: true },
+  colorMode: {
+    classSuffix: ''
+  },
+  image: { 
+    twicpics: { 
+      baseURL: process.env.NUXT_PUBLIC_TWICPICS_URL 
+    } 
   }
 })
