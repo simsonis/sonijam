@@ -37,5 +37,6 @@
     "remark-math": "^6.0.0",
     "rss": "^1.2.2",
     "sitemap": "^8.0.0"
-  }
+  },
+  "packageManager": "pnpm@8.9.0"
 }
