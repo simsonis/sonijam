@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     enabled: true
   },
   site: {
-    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://simsonis.github.io/sonijam',
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://simsonis.github.io',
     name: 'Sonijam',
     description: '개인 블로그',
     language: 'ko',
@@ -13,26 +13,26 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/sonijam/favicon.ico' }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
     }
   },
   runtimeConfig: {
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://simsonis.github.io/sonijam'
-    }
-  },
-  nitro: {
-    prerender: {
-      routes: ['/sonijam']
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://simsonis.github.io'
     }
   },
   build: {
     target: 'static'
   },
   generate: {
-    fallback: true,
-    dir: '.output/public/sonijam'
+    fallback: true
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/']
+    }
   },
   nitro: {
     prerender: {
