@@ -1,7 +1,7 @@
 ---
 title: '첫 번째 블로그 포스트'
 description: '블로그를 시작하며 작성한 첫 번째 포스트입니다.'
-date: '2024-03-20'
+publishDate: '2024-03-20'
 tags: ['blog', 'first-post']
 ---
 

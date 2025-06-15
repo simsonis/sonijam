@@ -10,9 +10,9 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
     },
-    pageTransition: { 
-      name: 'page', 
-      mode: 'out-in' 
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in'
     }
   },
 
@@ -32,7 +32,7 @@ export default defineNuxtConfig({
 
   // Build configuration
   // Note: target: 'static' is the default in Nuxt 3
-  
+
   // Generate configuration for static site generation
   nitro: {
     prerender: {
@@ -45,15 +45,19 @@ export default defineNuxtConfig({
       dir: 'dist',
       serverDir: 'dist/_nuxt',
       publicDir: 'dist'
+    },
+    alias: {
+      'unenv/runtime/mock/empty': 'unenv/mock/empty',
+      'unenv/runtime/mock/proxy-cjs': 'unenv/mock/proxy-cjs'
     }
   },
-  
+
   // For 404 fallback
   routeRules: {
     '/**': { static: true },
     '/404': { static: true }
   },
-  
+
   // Ensure static files are properly handled
   experimental: {
     payloadExtraction: true
@@ -69,8 +73,6 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     '@nuxthq/studio'
   ],
-
-
 
   // Content module configuration
   content: {
@@ -97,9 +99,9 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: ''
   },
-  image: { 
-    twicpics: { 
-      baseURL: process.env.NUXT_PUBLIC_TWICPICS_URL 
-    } 
+  image: {
+    twicpics: {
+      baseURL: process.env.NUXT_PUBLIC_TWICPICS_URL
+    }
   }
 })
