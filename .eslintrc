@@ -1,3 +1,13 @@
 {
-    "extends": ["@nuxtjs/eslint-config"]
+  "extends": ["@nuxtjs/eslint-config-typescript", "plugin:nuxt/recommended"],
+  "globals": {
+    "useColorMode": "readonly",
+    "useContent": "readonly",
+    "defineNuxtConfig": "readonly",
+    "definePageMeta": "readonly",
+    "useHead": "readonly",
+    "defineEventHandler": "readonly",
+    "useSiteConfig": "readonly",
+    "defineOgImageScreenshot": "readonly"
+  }
 }
