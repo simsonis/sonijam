@@ -41,4 +41,7 @@
 
 <script setup lang="ts">
 const { page } = useContent()
+defineOgImageScreenshot({
+  delay: 1000
+})
 </script>
