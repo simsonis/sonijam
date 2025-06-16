@@ -12,7 +12,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "lint": "eslint --fix --ext .vue,.ts,.js,.mjs .",
+    "lint": "eslint . --fix",
     "postinstall": "nuxt prepare",
     "netlify": "nuxt build && nuxt generate"
   },
@@ -24,10 +24,12 @@
     "@nuxthq/studio": "^2.0.3",
     "@nuxtjs/color-mode": "^3.4.2",
     "@nuxtjs/eslint-config": "^12.0.0",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/seo": "2.0.0-rc.18",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@tailwindcss/typography": "^0.5.14",
     "eslint": "^8.57.0",
+    "eslint-plugin-nuxt": "^4.0.0",
     "medium-zoom": "^1.1.0",
     "nuxt": "^3.12.4"
   },

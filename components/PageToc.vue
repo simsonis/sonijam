@@ -14,7 +14,7 @@ const { toc } = useContent()
         </a>
         <!-- Nested List - Start -->
         <ul v-if="link.children">
-          <li v-for="child in link.children">
+          <li v-for="child in link.children" :key="child.id">
             <a
               :href="`#${child.id}`"
             >
