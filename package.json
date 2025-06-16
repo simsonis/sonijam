@@ -12,7 +12,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "lint": "eslint --fix --ext .vue,.ts,.js,.mjs .",
+    "lint": "eslint . --fix",
     "postinstall": "nuxt prepare",
     "netlify": "nuxt build && nuxt generate"
   },
