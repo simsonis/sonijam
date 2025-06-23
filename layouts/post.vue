@@ -19,12 +19,12 @@
             </NuxtLink>
           </li>
           <li class="text-slate-400">/</li>
-          <li class="text-slate-600 dark:text-slate-400 truncate">{{ page.title }}</li>
+          <li class="text-slate-600 dark:text-slate-400 truncate">{{ page?.title }}</li>
         </ol>
       </nav>
 
       <article class="py-16 px-6 sm:px-8">
-        <header class="flex flex-col items-center max-w-4xl mx-auto">
+        <header v-if="page" class="flex flex-col items-center max-w-4xl mx-auto">
           <div class="flex items-center space-x-4 text-sm text-slate-500 dark:text-slate-400 mb-4">
             <time>{{ formatDate(page.publishDate) }}</time>
             <span>•</span>
@@ -65,7 +65,7 @@
           </div>
         </header>
         
-        <div class="mt-12 prose prose-slate mx-auto lg:prose-lg dark:prose-invert prose-img:rounded-2xl prose-img:shadow-md max-w-4xl">
+        <div v-if="page" class="mt-12 prose prose-slate mx-auto lg:prose-lg dark:prose-invert prose-img:rounded-2xl prose-img:shadow-md max-w-4xl">
           <PageToc />
           <ContentRenderer :key="page._id" :value="page" />
           
@@ -79,7 +79,7 @@
         </div>
 
         <!-- 작성자 정보 -->
-        <div class="max-w-4xl mx-auto">
+        <div v-if="page" class="max-w-4xl mx-auto">
           <AuthorBio 
             :author="page.author"
             :authorURL="page.authorURL"
@@ -87,12 +87,12 @@
         </div>
 
         <!-- 이전/다음 포스트 네비게이션 -->
-        <div class="max-w-4xl mx-auto">
+        <div v-if="page" class="max-w-4xl mx-auto">
           <PostNavigation :currentPath="page._path" />
         </div>
 
         <!-- 관련 포스트 -->
-        <div class="max-w-6xl mx-auto">
+        <div v-if="page" class="max-w-6xl mx-auto">
           <RelatedPosts 
             :currentTags="page.tags || []"
             :currentPath="page._path"
@@ -179,23 +179,30 @@ useHead({
 })
 
 // 구조화된 데이터 (JSON-LD)
-useJsonld({
-  '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
-  headline: page.value?.title,
-  description: page.value?.description,
-  image: page.value?.heroImage,
-  author: {
-    '@type': 'Person',
-    name: page.value?.author,
-    url: page.value?.authorURL
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'Sonijam',
-    url: 'https://simsonis.github.io/sonijam'
-  },
-  datePublished: page.value?.publishDate,
-  keywords: page.value?.tags?.join(', ')
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: page.value?.title,
+        description: page.value?.description,
+        image: page.value?.heroImage,
+        author: {
+          '@type': 'Person',
+          name: page.value?.author,
+          url: page.value?.authorURL
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Sonijam',
+          url: 'https://simsonis.github.io/sonijam'
+        },
+        datePublished: page.value?.publishDate,
+        keywords: page.value?.tags?.join(', ')
+      })
+    }
+  ]
 })
 </script>

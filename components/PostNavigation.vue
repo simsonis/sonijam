@@ -54,15 +54,20 @@ const { data: posts } = await queryContent('/posts')
   .find()
 
 // 현재 포스트의 인덱스 찾기
-const currentIndex = posts.findIndex(post => post._path === props.currentPath)
+const currentIndex = computed(() => {
+  if (!posts.value) return -1
+  return posts.value.findIndex(post => post._path === props.currentPath)
+})
 
 // 이전/다음 포스트 계산
 const prevPost = computed(() => {
-  return currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null
+  if (!posts.value || currentIndex.value === -1) return null
+  return currentIndex.value < posts.value.length - 1 ? posts.value[currentIndex.value + 1] : null
 })
 
 const nextPost = computed(() => {
-  return currentIndex > 0 ? posts[currentIndex - 1] : null
+  if (!posts.value || currentIndex.value === -1) return null
+  return currentIndex.value > 0 ? posts.value[currentIndex.value - 1] : null
 })
 </script>
 

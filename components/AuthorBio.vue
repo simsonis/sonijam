@@ -64,5 +64,5 @@ const { data: authorPosts } = await queryContent('/posts')
   .only(['_path'])
   .find()
 
-const postCount = computed(() => authorPosts.length)
+const postCount = computed(() => authorPosts.value?.length || 0)
 </script> 

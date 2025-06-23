@@ -61,9 +61,9 @@ const { data: allPosts } = await queryContent('/posts')
   .find()
 
 const relatedPosts = computed(() => {
-  if (!props.currentTags?.length) return []
+  if (!props.currentTags?.length || !allPosts?.value) return []
   
-  return allPosts
+  return allPosts.value
     .filter(post => {
       // 현재 포스트 제외
       if (post._path === props.currentPath) return false

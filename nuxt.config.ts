@@ -38,7 +38,8 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: ['/', '/sitemap.xml', '/rss.xml'],
-      ignore: ['/__pinceau_tokens_config.json', '/__pinceau_tokens_schema.json']
+      ignore: ['/__pinceau_tokens_config.json', '/__pinceau_tokens_schema.json'],
+      failOnError: false
     },
     static: true,
     output: {
