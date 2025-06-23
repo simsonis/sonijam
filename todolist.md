@@ -19,11 +19,11 @@
 
 ### 2. GitHub Pages 배포 설정
 - [x] GitHub 저장소 생성 (이미 완료됨)
-- [ ] GitHub Actions 워크플로우 파일 생성
-  - `/.github/workflows/deploy.yml` 파일 생성 필요
-  - Nuxt.js 빌드 및 GitHub Pages 배포 자동화 설정
-- [ ] GitHub 저장소 설정에서 Pages 활성화
-  - Settings > Pages > Source를 GitHub Actions로 설정
+- [x] GitHub Actions 워크플로우 파일 생성
+  - `/.github/workflows/deploy.yml` 파일 생성 완료
+  - Nuxt.js 빌드 및 GitHub Pages 배포 자동화 설정 완료
+- [x] GitHub 저장소 설정에서 Pages 활성화
+  - Settings > Pages > Source를 GitHub Actions로 설정 완료
 
 ### 3. 블로그 기능 구현
 - [x] 블로그 포스트 메타데이터 설정 (제목, 날짜, 태그 등)
@@ -33,17 +33,17 @@
 - [x] 코드 하이라이팅 설정
 
 ### 4. SEO 및 성능 최적화
-- [ ] 메타 태그 설정
-- [ ] sitemap.xml 생성
-- [ ] robots.txt 설정
+- [x] 메타 태그 설정
+- [x] sitemap.xml 생성
+- [x] robots.txt 설정
 - [ ] 이미지 최적화
-- [ ] 페이지 로딩 성능 개선
+- [x] 페이지 로딩 성능 개선
 
 ### 5. 추가 기능 구현
 - [ ] 댓글 시스템 통합 (예: Giscus, Utterances)
-- [ ] 소셜 미디어 공유 버튼 추가
-- [ ] 다크 모드 지원
-- [ ] 반응형 디자인 최적화
+- [x] 소셜 미디어 공유 버튼 추가
+- [x] 다크 모드 지원
+- [x] 반응형 디자인 최적화
 - [ ] 구글 애널리틱스 통합
 
 ### 6. 문서화 및 유지보수

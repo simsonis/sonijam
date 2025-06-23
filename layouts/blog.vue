@@ -16,3 +16,56 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+// SEO 메타 태그 설정
+useHead({
+  title: 'Sonijam - 개인 블로그',
+  meta: [
+    {
+      name: 'description',
+      content: '개발과 일상을 기록하는 개인 블로그입니다. 프로그래밍, 기술, 생각들을 공유합니다.'
+    },
+    {
+      name: 'keywords',
+      content: '블로그, 개발, 프로그래밍, 기술, 일상, Nuxt.js, Vue.js, JavaScript'
+    },
+    {
+      property: 'og:title',
+      content: 'Sonijam - 개인 블로그'
+    },
+    {
+      property: 'og:description',
+      content: '개발과 일상을 기록하는 개인 블로그입니다. 프로그래밍, 기술, 생각들을 공유합니다.'
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    },
+    {
+      property: 'og:site_name',
+      content: 'Sonijam Blog'
+    },
+    {
+      name: 'twitter:card',
+      content: 'summary'
+    },
+    {
+      name: 'twitter:title',
+      content: 'Sonijam - 개인 블로그'
+    },
+    {
+      name: 'twitter:description',
+      content: '개발과 일상을 기록하는 개인 블로그입니다.'
+    },
+    {
+      name: 'author',
+      content: 'Sonijam'
+    },
+    {
+      name: 'robots',
+      content: 'index, follow'
+    }
+  ]
+})
+</script>

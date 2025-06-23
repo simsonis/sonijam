@@ -152,36 +152,38 @@ const clearFilters = () => {
       <div v-for="post in filteredPosts" :key="post._path">
         <hr class="py-2 mt-8 border-t-2 w-20 mx-auto">
         <article
-          class="flex bg-white transition hover:shadow-xl dark:bg-gray-800 dark:shadow-gray-800/25 rounded-lg overflow-hidden"
+          class="flex flex-col sm:flex-row bg-white transition hover:shadow-xl dark:bg-gray-800 dark:shadow-gray-800/25 rounded-lg overflow-hidden"
         >
-          <div class="rotate-180 p-2 [writing-mode:_vertical-lr]">
+          <!-- 날짜 표시 - 모바일에서는 상단, 데스크톱에서는 세로 -->
+          <div class="flex sm:rotate-180 p-2 sm:[writing-mode:_vertical-lr] justify-center sm:justify-start">
             <time
               :datetime="post.publishDate"
-              class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900 dark:text-white"
+              class="flex flex-row sm:flex-col items-center justify-between gap-2 sm:gap-4 text-xs font-bold uppercase text-gray-900 dark:text-white"
             >
               <span>{{ post.publishDate.slice(7, 11) }}</span>
-              <span class="w-px flex-1 bg-gray-900/10 dark:bg-white/10" />
+              <span class="w-px sm:w-auto sm:h-px flex-1 bg-gray-900/10 dark:bg-white/10" />
               <span>{{ post.publishDate.slice(0, 6) }}</span>
             </time>
           </div>
 
-          <div class="hidden sm:block sm:basis-56">
+          <!-- 이미지 - 모바일에서는 전체 너비, 태블릿 이상에서는 고정 너비 -->
+          <div class="w-full sm:w-56 sm:basis-56">
             <nuxt-img
               provider="twicpics"
               :alt="post.alt"
               :src="post.heroImage"
               :width="post.image.width"
               :height="post.image.height"
-              class="aspect-auto h-full w-full object-cover"
+              class="aspect-video sm:aspect-auto h-48 sm:h-full w-full object-cover"
             />
           </div>
 
           <div class="flex flex-1 flex-col justify-between">
             <div
-              class="border-l border-gray-900/10 p-4 dark:border-white/10 sm:!border-l-transparent sm:p-6"
+              class="border-t sm:border-t-0 sm:border-l border-gray-900/10 p-4 dark:border-white/10 sm:!border-l-transparent sm:p-6"
             >
               <NuxtLink :to="post._path">
-                <h3 class="font-bold uppercase text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                <h3 class="font-bold text-lg sm:text-xl uppercase text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
                   {{ post.title }}
                 </h3>
               </NuxtLink>
@@ -192,7 +194,7 @@ const clearFilters = () => {
                 {{ post.description }}
               </p>
 
-              <!-- 태그 표시 -->
+              <!-- 태그 표시 - 모바일에서는 작게, 데스크톱에서는 기본 크기 -->
               <div v-if="post.tags && post.tags.length" class="flex flex-wrap gap-1 mt-3">
                 <span
                   v-for="tag in post.tags"
@@ -204,10 +206,11 @@ const clearFilters = () => {
               </div>
             </div>
 
-            <div class="sm:flex sm:items-end sm:justify-end">
+            <!-- 읽기 버튼 - 모바일에서는 전체 너비 -->
+            <div class="sm:flex sm:items-end sm:justify-end p-4 sm:p-0">
               <NuxtLink
                 :to="post._path"
-                class="block bg-yellow-400 px-5 py-3 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-yellow-500"
+                class="block w-full sm:w-auto bg-yellow-400 px-5 py-3 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-yellow-500"
               >
                 Read Blog
               </NuxtLink>

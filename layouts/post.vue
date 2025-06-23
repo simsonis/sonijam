@@ -31,6 +31,14 @@
         >
           <PageToc />
           <ContentRenderer :key="page._id" :value="page" />
+          
+          <!-- 소셜 공유 버튼 추가 -->
+          <div class="mt-12 not-prose">
+            <SocialShare 
+              :title="page.title" 
+              :description="page.description" 
+            />
+          </div>
         </div>
       </article>
       <NavContent />
@@ -41,6 +49,50 @@
 
 <script setup lang="ts">
 const { page } = useContent()
+
+// SEO 메타 태그 설정
+useHead({
+  title: page.value?.title,
+  meta: [
+    {
+      name: 'description',
+      content: page.value?.description
+    },
+    {
+      property: 'og:title',
+      content: page.value?.title
+    },
+    {
+      property: 'og:description',
+      content: page.value?.description
+    },
+    {
+      property: 'og:image',
+      content: page.value?.heroImage
+    },
+    {
+      property: 'og:type',
+      content: 'article'
+    },
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image'
+    },
+    {
+      name: 'twitter:title',
+      content: page.value?.title
+    },
+    {
+      name: 'twitter:description',
+      content: page.value?.description
+    },
+    {
+      name: 'twitter:image',
+      content: page.value?.heroImage
+    }
+  ]
+})
+
 defineOgImageScreenshot({
   delay: 1000
 })
