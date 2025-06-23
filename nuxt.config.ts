@@ -100,9 +100,18 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: ''
   },
+  
+  // Image configuration - 기본 provider 사용 (GitHub Pages 정적 배포용)
   image: {
-    twicpics: {
-      baseURL: process.env.NUXT_PUBLIC_TWICPICS_URL
+    quality: 80,
+    format: ['webp', 'jpg', 'png'],
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536
     }
   }
 })

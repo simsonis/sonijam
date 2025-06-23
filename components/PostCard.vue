@@ -24,7 +24,6 @@ const query: QueryBuilderParams = { path: '/posts', sort: { _id: -1, $numeric: t
 
           <div class="hidden sm:block sm:basis-56">
             <nuxt-img
-              provider="twicpics"
               :alt="post.alt"
               :src="post.heroImage"
               :width="post.image.width"

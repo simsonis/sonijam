@@ -169,7 +169,6 @@ const clearFilters = () => {
           <!-- 이미지 - 모바일에서는 전체 너비, 태블릿 이상에서는 고정 너비 -->
           <div class="w-full sm:w-56 sm:basis-56">
             <nuxt-img
-              provider="twicpics"
               :alt="post.alt"
               :src="post.heroImage"
               :width="post.image.width"

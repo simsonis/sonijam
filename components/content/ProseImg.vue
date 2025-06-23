@@ -1,6 +1,5 @@
 <template>
   <nuxt-img
-    provider="twicpics"
     :src="refinedSrc"
     :alt="alt"
     :width="width"
