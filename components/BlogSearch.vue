@@ -182,9 +182,17 @@ const clearFilters = () => {
             <div
               class="border-t sm:border-t-0 sm:border-l border-gray-900/10 p-4 dark:border-white/10 sm:!border-l-transparent sm:p-6"
             >
-              <NuxtLink :to="post._path">
-                <h3 class="font-bold text-lg sm:text-xl uppercase text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              <NuxtLink :to="post._path" class="group">
+                <h3 class="font-bold text-lg sm:text-xl uppercase text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">
                   {{ post.title }}
+                  <svg 
+                    class="inline-block ml-1 w-4 h-4 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all duration-200" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
                 </h3>
               </NuxtLink>
 
@@ -210,9 +218,20 @@ const clearFilters = () => {
             <div class="sm:flex sm:items-end sm:justify-end p-4 sm:p-0">
               <NuxtLink
                 :to="post._path"
-                class="block w-full sm:w-auto bg-yellow-400 px-5 py-3 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-yellow-500"
+                class="group block w-full sm:w-auto bg-yellow-400 hover:bg-yellow-500 px-5 py-3 text-center text-xs font-bold uppercase text-gray-900 transition-all duration-200 rounded-md shadow-sm hover:shadow-md transform hover:-translate-y-0.5"
+                :aria-label="`${post.title} 포스트 읽기`"
               >
-                Read Blog
+                <span class="flex items-center justify-center">
+                  Read Blog
+                  <svg 
+                    class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                </span>
               </NuxtLink>
             </div>
           </div>
