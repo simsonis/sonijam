@@ -2,12 +2,13 @@
 export default defineNuxtConfig({
   // App configuration
   app: {
+    baseURL: '/sonijam/',
     head: {
       htmlAttrs: {
         lang: 'ko'
       },
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        { rel: 'icon', type: 'image/x-icon', href: '/sonijam/favicon.ico' }
       ]
     },
     pageTransition: {
@@ -18,7 +19,7 @@ export default defineNuxtConfig({
 
   // Site metadata
   site: {
-    url: 'https://simsonis.github.io',
+    url: 'https://simsonis.github.io/sonijam',
     name: 'Sonijam',
     description: '개인 블로그',
   },
@@ -26,7 +27,7 @@ export default defineNuxtConfig({
   // Runtime config
   runtimeConfig: {
     public: {
-      siteUrl: 'https://simsonis.github.io'
+      siteUrl: 'https://simsonis.github.io/sonijam'
     }
   },
 
@@ -37,7 +38,15 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/sitemap.xml', '/rss.xml'],
+      routes: [
+        '/', 
+        '/sitemap.xml', 
+        '/rss.xml',
+        '/posts/hello-world',
+        '/posts/nuxt3-blog-setup',
+        '/posts/javascript-tips', 
+        '/posts/web-performance'
+      ],
       ignore: ['/__pinceau_tokens_config.json', '/__pinceau_tokens_schema.json'],
       failOnError: false
     },
@@ -101,17 +110,8 @@ export default defineNuxtConfig({
     classSuffix: ''
   },
   
-  // Image configuration - 기본 provider 사용 (GitHub Pages 정적 배포용)
+  // Image configuration - GitHub Pages 정적 배포용
   image: {
-    quality: 80,
-    format: ['webp', 'jpg', 'png'],
-    screens: {
-      xs: 320,
-      sm: 640,
-      md: 768,
-      lg: 1024,
-      xl: 1280,
-      xxl: 1536
-    }
+    provider: 'none'
   }
 })

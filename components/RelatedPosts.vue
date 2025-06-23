@@ -1,5 +1,5 @@
 <template>
-  <section v-if="relatedPosts.length > 0" class="mt-16 border-t border-slate-200 dark:border-slate-700 pt-8">
+  <section v-if="relatedPosts && relatedPosts.length > 0" class="mt-16 border-t border-slate-200 dark:border-slate-700 pt-8">
     <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6">
       관련 포스트
     </h2>
@@ -11,7 +11,7 @@
       >
         <NuxtLink :to="post._path" class="block">
           <div v-if="post.heroImage" class="aspect-video overflow-hidden">
-            <nuxt-img
+            <img
               :src="post.heroImage"
               :alt="post.alt || post.title"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -61,7 +61,7 @@ const { data: allPosts } = await queryContent('/posts')
   .find()
 
 const relatedPosts = computed(() => {
-  if (!props.currentTags?.length || !allPosts?.value) return []
+  if (!props.currentTags?.length || !allPosts?.value?.length) return []
   
   return allPosts.value
     .filter(post => {
@@ -82,6 +82,7 @@ const relatedPosts = computed(() => {
 
 // 날짜 포맷팅
 const formatDate = (dateString: string) => {
+  if (!dateString) return ''
   const date = new Date(dateString)
   return date.toLocaleDateString('ko-KR', {
     year: 'numeric',

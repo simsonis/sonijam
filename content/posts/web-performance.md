@@ -4,10 +4,10 @@ description: '사용자 경험을 개선하는 웹 성능 최적화 기법들을
 publishDate: '2024-03-23'
 author: 'Sonijam'
 authorURL: 'https://simsonis.github.io/sonijam'
-heroImage: '/assets/blog/img3.jpg'
+heroImage: '/sonijam/assets/blog/img3.jpg'
 alt: '웹 성능 최적화'
 image:
-    src: '/assets/blog/img3.jpg'
+    src: '/sonijam/assets/blog/img3.jpg'
     alt: '웹 성능 최적화'
     width: 1920
     height: 1280

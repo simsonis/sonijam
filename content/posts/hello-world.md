@@ -4,10 +4,10 @@ description: '블로그를 시작하며 작성한 첫 번째 포스트입니다.
 publishDate: '2024-03-20'
 author: 'Sonijam'
 authorURL: 'https://simsonis.github.io/sonijam'
-heroImage: '/assets/blog/img4.jpg'
+heroImage: '/sonijam/assets/blog/img4.jpg'
 alt: '블로그 시작'
 image:
-    src: '/assets/blog/img4.jpg'
+    src: '/sonijam/assets/blog/img4.jpg'
     alt: '블로그 시작'
     width: 1920
     height: 1280

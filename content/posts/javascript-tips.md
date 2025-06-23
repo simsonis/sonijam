@@ -4,10 +4,10 @@ description: '일상적인 JavaScript 개발에서 유용한 팁들을 모아봤
 publishDate: '2024-03-22'
 author: 'Sonijam'
 authorURL: 'https://simsonis.github.io/sonijam'
-heroImage: '/assets/blog/img2.jpg'
+heroImage: '/sonijam/assets/blog/img2.jpg'
 alt: 'JavaScript 개발 팁'
 image:
-    src: '/assets/blog/img2.jpg'
+    src: '/sonijam/assets/blog/img2.jpg'
     alt: 'JavaScript 개발 팁'
     width: 1920
     height: 1280

@@ -4,10 +4,10 @@ description: 'Nuxt 3와 GitHub Pages를 활용해서 무료로 개인 블로그�
 publishDate: '2024-03-21'
 author: 'Sonijam'
 authorURL: 'https://simsonis.github.io/sonijam'
-heroImage: '/assets/blog/img1.jpg'
+heroImage: '/sonijam/assets/blog/img1.jpg'
 alt: 'Nuxt 3 블로그 구축'
 image:
-    src: '/assets/blog/img1.jpg'
+    src: '/sonijam/assets/blog/img1.jpg'
     alt: 'Nuxt 3 블로그 구축'
     width: 1920
     height: 1280

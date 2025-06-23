@@ -1,9 +1,7 @@
 <template>
-  <nuxt-img
+  <img
     :src="refinedSrc"
     :alt="alt"
-    :width="width"
-    :height="height"
     loading="lazy"
     class="image-zoomable"
   />
