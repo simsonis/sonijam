@@ -93,7 +93,8 @@ useHead({
   ]
 })
 
-defineOgImageScreenshot({
-  delay: 1000
-})
+// OG 이미지 스크린샷 기능 임시 비활성화 (빌드 에러 해결)
+// defineOgImageScreenshot({
+//   delay: 1000
+// })
 </script>
