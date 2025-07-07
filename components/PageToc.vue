@@ -2,29 +2,43 @@
 const { toc } = useContent()
 const activeId = ref('')
 
+// IntersectionObserver 인스턴스 저장
+let observer: IntersectionObserver | null = null
+
 // 스크롤 시 활성 헤딩 추적
 onMounted(() => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          activeId.value = entry.target.id
-        }
-      })
-    },
-    {
-      rootMargin: '-80px 0px -80% 0px'
-    }
-  )
+  try {
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            activeId.value = entry.target.id
+          }
+        })
+      },
+      {
+        rootMargin: '-80px 0px -80% 0px'
+      }
+    )
 
-  // 모든 헤딩 요소 관찰
-  document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((heading) => {
-    observer.observe(heading)
-  })
+    // 모든 헤딩 요소 관찰
+    const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6')
+    headings.forEach((heading) => {
+      if (observer) {
+        observer.observe(heading)
+      }
+    })
+  } catch (error) {
+    console.warn('IntersectionObserver initialization failed:', error)
+  }
+})
 
-  onUnmounted(() => {
+// 컴포넌트 언마운트 시 정리
+onUnmounted(() => {
+  if (observer) {
     observer.disconnect()
-  })
+    observer = null
+  }
 })
 
 // 부드러운 스크롤
