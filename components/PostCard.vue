@@ -16,9 +16,9 @@ const query: QueryBuilderParams = { path: '/posts', sort: { _id: -1, $numeric: t
             :datetime="post.publishDate"
             class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900 dark:text-white"
           >
-              <span>{{ post.publishDate.slice(7, 11) }}</span>
+              <span>{{ post.publishDate.slice(0, 4) }}</span>
               <span class="w-px flex-1 bg-gray-900/10 dark:bg-white/10" />
-              <span>{{ post.publishDate.slice(0, 6) }}</span>
+              <span>{{ post.publishDate.slice(5) }}</span>
             </time>
           </div>
 
