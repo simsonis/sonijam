@@ -12,10 +12,10 @@ const query: QueryBuilderParams = { path: '/posts', sort: { _id: -1, $numeric: t
           class="flex bg-white transition hover:shadow-xl dark:bg-gray-800 dark:shadow-gray-800/25"
         >
           <div class="rotate-180 p-2 [writing-mode:_vertical-lr]">
-            <time
-              datetime="{{ post.publishDate }}"
-              class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900 dark:text-white"
-            >
+                      <time
+            :datetime="post.publishDate"
+            class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900 dark:text-white"
+          >
               <span>{{ post.publishDate.slice(7, 11) }}</span>
               <span class="w-px flex-1 bg-gray-900/10 dark:bg-white/10" />
               <span>{{ post.publishDate.slice(0, 6) }}</span>

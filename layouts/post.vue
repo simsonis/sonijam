@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
     <BlogHeader />
-    
+
     <main class="container mx-auto px-4 py-8 max-w-4xl">
       <!-- 브레드크럼 네비게이션 -->
       <nav class="mb-8" aria-label="Breadcrumb">
@@ -26,7 +26,7 @@
           <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             {{ page?.title }}
           </h1>
-          
+
           <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-6">
             <time v-if="page?.publishDate" :datetime="page.publishDate">
               {{ formatDate(page.publishDate) }}
@@ -61,7 +61,7 @@
               :alt="page.alt || page.title || '포스트 이미지'"
               class="w-full max-w-3xl mx-auto rounded-lg shadow-lg"
               loading="eager"
-            />
+            >
           </div>
         </div>
       </header>
@@ -73,7 +73,7 @@
 
       <!-- 소셜 공유 -->
       <div v-if="page?.title" class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-        <SocialShare 
+        <SocialShare
           :title="page.title"
           :description="page.description || ''"
         />
@@ -90,7 +90,7 @@ const { page } = useContent()
 
 // 날짜 포맷팅
 const formatDate = (dateString: string) => {
-  if (!dateString) return ''
+  if (!dateString) { return '' }
   const date = new Date(dateString)
   return date.toLocaleDateString('ko-KR', {
     year: 'numeric',

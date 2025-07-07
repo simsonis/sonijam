@@ -21,7 +21,7 @@ export default defineNuxtConfig({
   site: {
     url: 'https://simsonis.github.io/sonijam',
     name: 'Sonijam',
-    description: '개인 블로그',
+    description: '개인 블로그'
   },
 
   // Runtime config
@@ -39,12 +39,12 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: [
-        '/', 
-        '/sitemap.xml', 
+        '/',
+        '/sitemap.xml',
         '/rss.xml',
         '/posts/hello-world',
         '/posts/nuxt3-blog-setup',
-        '/posts/javascript-tips', 
+        '/posts/javascript-tips',
         '/posts/web-performance'
       ],
       ignore: ['/__pinceau_tokens_config.json', '/__pinceau_tokens_schema.json'],
@@ -109,7 +109,7 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: ''
   },
-  
+
   // Image configuration - GitHub Pages 정적 배포용
   image: {
     provider: 'none'

@@ -11,8 +11,8 @@
         <p class="text-gray-600 dark:text-gray-400 mb-4">
           요청하신 포스트가 존재하지 않습니다.
         </p>
-        <NuxtLink 
-          to="/" 
+        <NuxtLink
+          to="/"
           class="inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition-colors"
         >
           홈으로 돌아가기
@@ -40,4 +40,4 @@ if (!data.value) {
     statusMessage: 'Post Not Found'
   })
 }
-</script> 
+</script>

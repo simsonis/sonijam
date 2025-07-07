@@ -16,13 +16,42 @@ const currentUrl = computed(() => {
   return props.url || `${config.public.siteUrl}${route.path}`
 })
 
+// 입력 값 검증 및 정제
+const sanitizeInput = (input: string, maxLength: number = 280): string => {
+  if (!input || typeof input !== 'string') return ''
+  
+  // HTML 태그 제거
+  const cleanInput = input.replace(/<[^>]*>/g, '')
+  
+  // 길이 제한
+  return cleanInput.length > maxLength 
+    ? cleanInput.substring(0, maxLength).trim() + '...'
+    : cleanInput.trim()
+}
+
+// URL 유효성 검증
+const isValidUrl = (url: string): boolean => {
+  try {
+    const urlObj = new URL(url)
+    return ['http:', 'https:'].includes(urlObj.protocol)
+  } catch {
+    return false
+  }
+}
+
 // 소셜 미디어 공유 URL 생성
-const shareUrls = computed(() => ({
-  twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(props.title)}&url=${encodeURIComponent(currentUrl.value)}`,
-  facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl.value)}`,
-  linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl.value)}`,
-  kakao: `https://story.kakao.com/share?url=${encodeURIComponent(currentUrl.value)}&text=${encodeURIComponent(props.title)}`
-}))
+const shareUrls = computed(() => {
+  const sanitizedTitle = sanitizeInput(props.title)
+  const sanitizedDescription = sanitizeInput(props.description)
+  const url = isValidUrl(currentUrl.value) ? currentUrl.value : config.public.siteUrl
+  
+  return {
+    twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(sanitizedTitle)}&url=${encodeURIComponent(url)}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+    kakao: `https://story.kakao.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(sanitizedTitle)}`
+  }
+})
 
 // 링크 복사 기능
 const copyToClipboard = async () => {
